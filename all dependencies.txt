@@ -1,0 +1,41 @@
+sudo apt update
+sudo apt upgrade -y
+
+sudo apt install -y python3-opencv python3-numpy
+python3 -c "import cv2; print(cv2.__version__)"
+
+sudo apt install -y \
+python3-pip \
+python3-venv \
+libatlas-base-dev \
+libopenblas-dev \
+liblapack-dev \
+libjpeg-dev \
+libpng-dev \
+v4l-utils
+
+
+mkdir ~/MoodVision
+cd ~/MoodVision
+
+
+python3 -m venv --system-site-packages venv
+source venv/bin/activate
+
+(venv) pi@raspberrypi:~/MoodVision $
+
+
+Install OpenCV Haar Cascade data
+sudo apt update
+sudo apt install -y opencv-data
+find /usr -name "haarcascade_frontalface_default.xml" 2>/dev/null
+You should now see a path similar to:
+
+/usr/share/opencv4/haarcascades/haarcascade_frontalface_default.xml
+
+Download the emotion model
+
+/home/srinivas/MoodVision
+cd ~/MoodVision/model
+wget https://github.com/onnx/models/raw/main/validated/vision/body_analysis/emotion_ferplus/model/emotion-ferplus-8.onnx
+
